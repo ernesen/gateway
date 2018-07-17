@@ -45,7 +45,7 @@ podTemplate(
 			//IMAGE_BUILD = sh(script: 'git rev-list --all --count', returnStdout: true).trim()
 			IMAGE_BUILD = sh(script: 'git rev-list HEAD --count', returnStdout: true).trim()
         }
-/*        
+        
 		stage ('Build golang') {
             container ('golang') {
                 sh 'CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .'
@@ -75,7 +75,7 @@ podTemplate(
 				sh "helm upgrade --install --set image.repository=${DOCKER_IMAGE},image.tag=${IMAGE_BUILD} hello hello"
             }
         }
-*/
+
 		stage ('Deploy AWS terraform') {
             container ('terraform') {
 				//withCredentials([file(credentialsId: 'gcloud', variable: 'gcloud')]) {
@@ -91,7 +91,7 @@ podTemplate(
 
             }
 		}
-/*		
+		
 		stage ('Email Notification') {
 			withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'email-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
 				sh "curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd \
@@ -110,6 +110,6 @@ podTemplate(
 				-d text=\"Hello from Nexmo\""			
 			}
 		}
-*/
+
     }
 }
