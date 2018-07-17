@@ -1,0 +1,7 @@
+From: "User Name" <username@gmail.com>
+To: "Ernese Norelus" <ernesen@icloud.com>
+Subject: Jenkins Pipeline success
+
+Hi Ernese,
+I’m sending this mail with curl thru my gmail account from Jenkins pipeline
+Bye!
