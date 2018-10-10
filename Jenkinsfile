@@ -1,6 +1,7 @@
 podTemplate(
     label: 'mypod', 
-    inheritFrom: 'default',
+    //inheritFrom: 'default',
+    cloud: 'kubernetes',
     containers: [
         containerTemplate(
             name: 'golang', 
