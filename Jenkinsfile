@@ -23,7 +23,7 @@
         }
 	    
         stage ('Deploy helm') {
-			sh "helm init --client-only --skip-refresh"
+			//sh "helm init --client-only --skip-refresh"
 			sh "helm list"
 			//sh "helm upgrade --install --set image.repository=${DOCKER_IMAGE},image.tag=${IMAGE_BUILD} hello hello"
         }
