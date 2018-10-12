@@ -6,13 +6,14 @@
         stage ('Clone repository') {
             checkout scm
 			IMAGE_BUILD = sh(script: 'git rev-list HEAD --count', returnStdout: true).trim()
+		IMAGE_BUILD=v${IMAGE_BUILD}
         }
         
         
 		stage ('Build image') {
 			withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
 				sh "docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}"
-				sh "docker build -t ${DOCKER_IMAGE}:v${IMAGE_BUILD} ."
+				sh "docker build -t ${DOCKER_IMAGE}:${IMAGE_BUILD} ."
 				sh "docker tag ${DOCKER_IMAGE}:${IMAGE_BUILD} ${DOCKER_IMAGE}:latest"
 			}			
         }
