@@ -21,12 +21,13 @@
 			sh "docker push ${DOCKER_IMAGE}:v${IMAGE_BUILD}"
 			sh "docker push ${DOCKER_IMAGE}:latest"
         }
-/*
+	    
         stage ('Deploy helm') {
 			sh "helm init --client-only --skip-refresh"
-			sh "helm upgrade --install --set image.repository=${DOCKER_IMAGE},image.tag=${IMAGE_BUILD} hello hello"
+			sh "helm list"
+			//sh "helm upgrade --install --set image.repository=${DOCKER_IMAGE},image.tag=${IMAGE_BUILD} hello hello"
         }
-
+/*
 		stage ('Deploy AWS terraform') {
 			withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-credentials', usernameVariable: 'access_key', passwordVariable: 'secret_key']]){
 				//sh "cp $gcloud credentials.json"
@@ -46,7 +47,7 @@
 				--upload-file mail.txt --user '$USERNAME:$PASSWORD' --insecure"			
 			}
 		}
-		
+/*		
 		stage ('SMS Notification') {
 			withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'sms-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
 				sh "curl -X POST  https://rest.nexmo.com/sms/json \
@@ -54,8 +55,8 @@
 				-d api_secret=$PASSWORD \
 				-d to=6592991210 \
 				-d from=\"NEXMO\" \
-				-d text=\"Hello from Nexmo\""			
+				-d text=\"Hello from Nexmo running in Jenkins\""			
 			}
 		}
-
+*/
     }
