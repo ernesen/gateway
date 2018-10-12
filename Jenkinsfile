@@ -1,4 +1,4 @@
-    node('mypod') {
+    node {
 	
         def IMAGE_BUILD
 		def DOCKER_IMAGE='ernesen/gateway'
