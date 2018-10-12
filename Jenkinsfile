@@ -21,12 +21,12 @@
 			sh "docker push ${DOCKER_IMAGE}:v${IMAGE_BUILD}"
 			sh "docker push ${DOCKER_IMAGE}:latest"
         }
-
+/*
         stage ('Deploy helm') {
 			sh "helm init --client-only --skip-refresh"
 			sh "helm upgrade --install --set image.repository=${DOCKER_IMAGE},image.tag=${IMAGE_BUILD} hello hello"
         }
-/*
+
 		stage ('Deploy AWS terraform') {
 			withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-credentials', usernameVariable: 'access_key', passwordVariable: 'secret_key']]){
 				//sh "cp $gcloud credentials.json"
